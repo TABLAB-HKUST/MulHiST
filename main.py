@@ -62,17 +62,17 @@ if __name__ == '__main__':
     parser.add_argument('--netG', type=str, default='adain', choices=['basic', 'm_scale', 'adain'])
     parser.add_argument('--style_fusion', type=str, default='adain', choices=['basic', 'm_scale', 'adain'])
     # Training configuration.
-    parser.add_argument('--dataroot', type=str, default='/data1/nfs/shilulin/data/CHAMP_data-Ivy/20230406-thick lung/training-4X', help='the path of training data')
-    parser.add_argument('--test_dataroot', type=str, default='/data1/nfs/shilulin/data/1toN/Thick mouse/ThickKidney-label/Newtest', help='the path of testing data')
-    parser.add_argument('--AF', type=str, default='AF', help='the filename of AF image')    
-    parser.add_argument('--HE', type=str, default='HE', help='the filename of HE image')  
-    parser.add_argument('--PAS', type=str, default='PAS', help='the filename of PAS image')  
-    parser.add_argument('--MT', type=str, default='MT', help='the filename of MT image')
+    parser.add_argument('--dataroot', type=str, required=True,, help='the path of training data')
+    parser.add_argument('--test_dataroot', type=str, default='/data/test', help='the path of testing data')
+    parser.add_argument('--AF', type=str, default='AF', help='AF image (domain 1)')    
+    parser.add_argument('--HE', type=str, default='HE', help='HE image (domain 2)')  
+    parser.add_argument('--PAS', type=str, default='PAS', help='PAS image (domain 3)')  
+    parser.add_argument('--MT', type=str, default='MT', help='MT image (domain 4)')
 
     parser.add_argument('--scale_A', type=float, default=1, help='resize slide ratio for unstained WSI')
     parser.add_argument('--scale_B', type=float, default=1, help='resize slide ratio for stained WSI') 
         
-    parser.add_argument('--train_data', type=int, default=10000, help='the size of training dataset')
+    parser.add_argument('--train_data', type=int, default=10000, help='the size of training dataset, no use')
     parser.add_argument('--batch_size', type=int, default=16, help='mini-batch size')
 
     parser.add_argument('--num_iters', type=int, default=200000, help='number of total iterations for training D')
